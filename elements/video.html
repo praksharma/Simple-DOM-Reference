@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HTMLVideoElement — DOMref</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600;700&display=swap">
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+  <div class="layout">
+    <main class="main">
+      <div class="topbar"></div>
+      <div class="content">
+
+        <div class="page-header">
+          <div class="element-badge">HTMLVideoElement</div>
+          <h1 class="page-title">Video Element</h1>
+          <p class="page-subtitle">Represents a <code style="font-family:var(--font-mono);color:var(--text-code)">&lt;video&gt;</code> tag. Embeds a video player. Control playback, volume, and position entirely through JavaScript.</p>
+          <div class="html-preview">
+            <span class="tag-bracket">&lt;</span><span class="tag-name">video</span>
+            <span class="attr-name"> src</span><span class="tag-bracket">=</span><span class="attr-val">"clip.mp4"</span>
+            <span class="attr-name"> controls</span>
+            <span class="tag-bracket">&gt;&lt;/</span><span class="tag-name">video</span><span class="tag-bracket">&gt;</span>
+          </div>
+        </div>
+
+        <div class="section">
+          <div class="section-title">Unique Properties</div>
+          <table class="prop-table">
+            <thead><tr><th>Property</th><th>Type</th><th>Description</th></tr></thead>
+            <tbody>
+
+              <tr class="prop-row" data-expand="exp-vsrc">
+                <td><span class="prop-name">src</span></td><td><span class="prop-type">string</span></td>
+                <td><span class="prop-desc">URL of the video file.</span> <span class="expand-hint">▾</span></td>
+              </tr>
+              <tr class="prop-expand-row" id="exp-vsrc"><td colspan="3"><div class="prop-expand-inner">
+                <div class="code-block"><div class="code-block-header"><span class="code-block-lang">JS</span><button class="copy-btn" data-target="cv-src">Copy</button></div>
+                <pre><code id="cv-src">video.src = 'clip.mp4';
+video.load(); // required after changing src</code></pre></div>
+              </div></td></tr>
+
+              <tr class="prop-row" data-expand="exp-vct">
+                <td><span class="prop-name">currentTime</span></td><td><span class="prop-type">number</span></td>
+                <td><span class="prop-desc">Current playback position in seconds. Readable and writable.</span> <span class="expand-hint">▾</span></td>
+              </tr>
+              <tr class="prop-expand-row" id="exp-vct"><td colspan="3"><div class="prop-expand-inner">
+                <div class="code-block"><div class="code-block-header"><span class="code-block-lang">JS</span><button class="copy-btn" data-target="cv-ct">Copy</button></div>
+                <pre><code id="cv-ct">console.log(video.currentTime); // e.g. 12.4 seconds
+video.currentTime = 30;         // seek to 30s</code></pre></div>
+              </div></td></tr>
+
+              <tr class="prop-row" data-expand="exp-vdur">
+                <td><span class="prop-name">duration</span></td><td><span class="prop-type">number</span></td>
+                <td><span class="prop-desc">Total video length in seconds. Read-only.</span> <span class="expand-hint">▾</span></td>
+              </tr>
+              <tr class="prop-expand-row" id="exp-vdur"><td colspan="3"><div class="prop-expand-inner">
+                <div class="code-block"><div class="code-block-header"><span class="code-block-lang">JS</span><button class="copy-btn" data-target="cv-dur">Copy</button></div>
+                <pre><code id="cv-dur">console.log(video.duration);    // e.g. 120.5
+const pct = video.currentTime / video.duration * 100;
+console.log(pct + '% through');</code></pre></div>
+              </div></td></tr>
+
+              <tr class="prop-row" data-expand="exp-vvol">
+                <td><span class="prop-name">volume</span></td><td><span class="prop-type">number</span></td>
+                <td><span class="prop-desc">Volume from 0.0 (silent) to 1.0 (full).</span> <span class="expand-hint">▾</span></td>
+              </tr>
+              <tr class="prop-expand-row" id="exp-vvol"><td colspan="3"><div class="prop-expand-inner">
+                <div class="code-block"><div class="code-block-header"><span class="code-block-lang">JS</span><button class="copy-btn" data-target="cv-vol">Copy</button></div>
+                <pre><code id="cv-vol">video.volume = 0.5;  // 50% volume
+video.volume = 0;    // silent (same as muted)</code></pre></div>
+              </div></td></tr>
+
+              <tr class="prop-row" data-expand="exp-vmuted">
+                <td><span class="prop-name">muted</span></td><td><span class="prop-type">boolean</span></td>
+                <td><span class="prop-desc">Mutes/unmutes without changing volume level.</span> <span class="expand-hint">▾</span></td>
+              </tr>
+              <tr class="prop-expand-row" id="exp-vmuted"><td colspan="3"><div class="prop-expand-inner">
+                <div class="code-block"><div class="code-block-header"><span class="code-block-lang">JS</span><button class="copy-btn" data-target="cv-muted">Copy</button></div>
+                <pre><code id="cv-muted">video.muted = true;   // mute
+video.muted = false;  // unmute (volume returns to previous)</code></pre></div>
+              </div></td></tr>
+
+              <tr class="prop-row" data-expand="exp-vpaused">
+                <td><span class="prop-name">paused</span></td><td><span class="prop-type">boolean</span></td>
+                <td><span class="prop-desc">True if the video is not playing. Read-only.</span> <span class="expand-hint">▾</span></td>
+              </tr>
+              <tr class="prop-expand-row" id="exp-vpaused"><td colspan="3"><div class="prop-expand-inner">
+                <div class="code-block"><div class="code-block-header"><span class="code-block-lang">JS</span><button class="copy-btn" data-target="cv-paused">Copy</button></div>
+                <pre><code id="cv-paused">if (video.paused) {
+  video.play();
+} else {
+  video.pause();
+}</code></pre></div>
+              </div></td></tr>
+
+              <tr class="prop-row" data-expand="exp-vrate">
+                <td><span class="prop-name">playbackRate</span></td><td><span class="prop-type">number</span></td>
+                <td><span class="prop-desc">Playback speed. 1 = normal, 2 = double speed, 0.5 = half speed.</span> <span class="expand-hint">▾</span></td>
+              </tr>
+              <tr class="prop-expand-row" id="exp-vrate"><td colspan="3"><div class="prop-expand-inner">
+                <div class="code-block"><div class="code-block-header"><span class="code-block-lang">JS</span><button class="copy-btn" data-target="cv-rate">Copy</button></div>
+                <pre><code id="cv-rate">video.playbackRate = 1.5; // 1.5x speed
+video.playbackRate = 0.5; // slow motion</code></pre></div>
+              </div></td></tr>
+
+            </tbody>
+          </table>
+        </div>
+
+        <div class="section">
+          <div class="section-title">Common Methods</div>
+          <table class="prop-table">
+            <thead><tr><th>Method</th><th>Returns</th><th>Description</th></tr></thead>
+            <tbody>
+              <tr class="prop-row" data-expand="exp-vplay">
+                <td><span class="prop-name">play()</span></td><td><span class="prop-type">Promise</span></td>
+                <td><span class="prop-desc">Starts playback. Returns a Promise (can fail if browser blocks autoplay).</span> <span class="expand-hint">▾</span></td>
+              </tr>
+              <tr class="prop-expand-row" id="exp-vplay"><td colspan="3"><div class="prop-expand-inner">
+                <div class="code-block"><div class="code-block-header"><span class="code-block-lang">JS</span><button class="copy-btn" data-target="cv-play">Copy</button></div>
+                <pre><code id="cv-play">video.play().catch(err => {
+  console.log('Autoplay blocked:', err);
+});</code></pre></div>
+              </div></td></tr>
+
+              <tr class="prop-row" data-expand="exp-vpause">
+                <td><span class="prop-name">pause()</span></td><td><span class="prop-type">void</span></td>
+                <td><span class="prop-desc">Pauses playback.</span> <span class="expand-hint">▾</span></td>
+              </tr>
+              <tr class="prop-expand-row" id="exp-vpause"><td colspan="3"><div class="prop-expand-inner">
+                <div class="code-block"><div class="code-block-header"><span class="code-block-lang">JS</span><button class="copy-btn" data-target="cv-pause">Copy</button></div>
+                <pre><code id="cv-pause">video.pause();</code></pre></div>
+              </div></td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="section">
+          <div class="section-title">Quick Examples</div>
+          <div class="code-block"><div class="code-block-header"><span class="code-block-lang">JS</span><button class="copy-btn" data-target="cv-ex">Copy</button></div>
+          <pre><code id="cv-ex">const video = document.querySelector('video');
+
+// Custom play/pause button
+document.querySelector('#btn').addEventListener('click', () => {
+  if (video.paused) video.play();
+  else video.pause();
+});
+
+// Progress bar update
+video.addEventListener('timeupdate', () => {
+  const pct = (video.currentTime / video.duration) * 100;
+  document.querySelector('#progress').style.width = pct + '%';
+});
+
+// Seek on click
+document.querySelector('#progress-bar').addEventListener('click', (e) => {
+  const rect = e.target.getBoundingClientRect();
+  const pct = (e.clientX - rect.left) / rect.width;
+  video.currentTime = pct * video.duration;
+});</code></pre></div>
+        </div>
+
+        <div class="section">
+          <div class="section-title">Related Elements</div>
+          <div class="related-grid">
+            <a href="audio.html" class="related-card">&lt;audio&gt;</a>
+            <a href="canvas.html" class="related-card">&lt;canvas&gt;</a>
+          </div>
+        </div>
+
+      </div>
+    </main>
+  </div>
+  <script>window.PAGE_TITLE = 'HTMLVideoElement';</script>
+  <script src="../sidebar.js"></script>
+  <script src="../main.js"></script>
+</body>
+</html>

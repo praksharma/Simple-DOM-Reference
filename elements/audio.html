@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HTMLAudioElement — DOMref</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600;700&display=swap">
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+  <div class="layout">
+    <main class="main">
+      <div class="topbar"></div>
+      <div class="content">
+
+        <div class="page-header">
+          <div class="element-badge">HTMLAudioElement</div>
+          <h1 class="page-title">Audio Element</h1>
+          <p class="page-subtitle">Represents an <code style="font-family:var(--font-mono);color:var(--text-code)">&lt;audio&gt;</code> tag. Shares almost all properties with <code style="font-family:var(--font-mono);color:var(--text-code)">&lt;video&gt;</code> — the key difference is there's no visual output.</p>
+          <div class="html-preview">
+            <span class="tag-bracket">&lt;</span><span class="tag-name">audio</span>
+            <span class="attr-name"> src</span><span class="tag-bracket">=</span><span class="attr-val">"song.mp3"</span>
+            <span class="attr-name"> controls</span>
+            <span class="tag-bracket">&gt;&lt;/</span><span class="tag-name">audio</span><span class="tag-bracket">&gt;</span>
+          </div>
+        </div>
+
+        <div class="section">
+          <div class="section-title">Unique Properties</div>
+          <table class="prop-table">
+            <thead><tr><th>Property</th><th>Type</th><th>Description</th></tr></thead>
+            <tbody>
+              <tr class="prop-row" data-expand="exp-asrc">
+                <td><span class="prop-name">src</span></td><td><span class="prop-type">string</span></td>
+                <td><span class="prop-desc">URL of the audio file.</span> <span class="expand-hint">▾</span></td>
+              </tr>
+              <tr class="prop-expand-row" id="exp-asrc"><td colspan="3"><div class="prop-expand-inner">
+                <div class="code-block"><div class="code-block-header"><span class="code-block-lang">JS</span><button class="copy-btn" data-target="ca-src">Copy</button></div>
+                <pre><code id="ca-src">audio.src = 'song.mp3';
+audio.load(); // reload after src change</code></pre></div>
+              </div></td></tr>
+
+              <tr class="prop-row" data-expand="exp-avol">
+                <td><span class="prop-name">volume</span></td><td><span class="prop-type">number</span></td>
+                <td><span class="prop-desc">0.0 (silent) to 1.0 (full volume).</span> <span class="expand-hint">▾</span></td>
+              </tr>
+              <tr class="prop-expand-row" id="exp-avol"><td colspan="3"><div class="prop-expand-inner">
+                <div class="code-block"><div class="code-block-header"><span class="code-block-lang">JS</span><button class="copy-btn" data-target="ca-vol">Copy</button></div>
+                <pre><code id="ca-vol">audio.volume = 0.3; // 30% volume</code></pre></div>
+              </div></td></tr>
+
+              <tr class="prop-row" data-expand="exp-amuted">
+                <td><span class="prop-name">muted</span></td><td><span class="prop-type">boolean</span></td>
+                <td><span class="prop-desc">Mute/unmute without changing the volume property.</span> <span class="expand-hint">▾</span></td>
+              </tr>
+              <tr class="prop-expand-row" id="exp-amuted"><td colspan="3"><div class="prop-expand-inner">
+                <div class="code-block"><div class="code-block-header"><span class="code-block-lang">JS</span><button class="copy-btn" data-target="ca-muted">Copy</button></div>
+                <pre><code id="ca-muted">audio.muted = true;</code></pre></div>
+              </div></td></tr>
+
+              <tr class="prop-row" data-expand="exp-aloop">
+                <td><span class="prop-name">loop</span></td><td><span class="prop-type">boolean</span></td>
+                <td><span class="prop-desc">If true, audio restarts automatically when it ends.</span> <span class="expand-hint">▾</span></td>
+              </tr>
+              <tr class="prop-expand-row" id="exp-aloop"><td colspan="3"><div class="prop-expand-inner">
+                <div class="code-block"><div class="code-block-header"><span class="code-block-lang">JS</span><button class="copy-btn" data-target="ca-loop">Copy</button></div>
+                <pre><code id="ca-loop">audio.loop = true;  // great for background music</code></pre></div>
+              </div></td></tr>
+
+              <tr class="prop-row" data-expand="exp-act">
+                <td><span class="prop-name">currentTime</span></td><td><span class="prop-type">number</span></td>
+                <td><span class="prop-desc">Playback position in seconds. Set it to seek.</span> <span class="expand-hint">▾</span></td>
+              </tr>
+              <tr class="prop-expand-row" id="exp-act"><td colspan="3"><div class="prop-expand-inner">
+                <div class="code-block"><div class="code-block-header"><span class="code-block-lang">JS</span><button class="copy-btn" data-target="ca-ct">Copy</button></div>
+                <pre><code id="ca-ct">audio.currentTime = 0;  // restart from beginning
+audio.currentTime = 60; // skip to 1 minute</code></pre></div>
+              </div></td></tr>
+
+              <tr class="prop-row" data-expand="exp-apaused">
+                <td><span class="prop-name">paused</span></td><td><span class="prop-type">boolean</span></td>
+                <td><span class="prop-desc">True if not playing. Read-only.</span> <span class="expand-hint">▾</span></td>
+              </tr>
+              <tr class="prop-expand-row" id="exp-apaused"><td colspan="3"><div class="prop-expand-inner">
+                <div class="code-block"><div class="code-block-header"><span class="code-block-lang">JS</span><button class="copy-btn" data-target="ca-paused">Copy</button></div>
+                <pre><code id="ca-paused">if (audio.paused) audio.play();
+else audio.pause();</code></pre></div>
+              </div></td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="section">
+          <div class="section-title">Common Methods</div>
+          <table class="prop-table">
+            <thead><tr><th>Method</th><th>Returns</th><th>Description</th></tr></thead>
+            <tbody>
+              <tr class="prop-row" data-expand="exp-aplay">
+                <td><span class="prop-name">play()</span></td><td><span class="prop-type">Promise</span></td>
+                <td><span class="prop-desc">Start playback. Returns a Promise.</span> <span class="expand-hint">▾</span></td>
+              </tr>
+              <tr class="prop-expand-row" id="exp-aplay"><td colspan="3"><div class="prop-expand-inner">
+                <p>Tip: you can create an Audio object without an HTML element at all.</p>
+                <div class="code-block"><div class="code-block-header"><span class="code-block-lang">JS</span><button class="copy-btn" data-target="ca-play">Copy</button></div>
+                <pre><code id="ca-play">// Without any HTML element:
+const sfx = new Audio('click.mp3');
+sfx.play();
+
+// From the DOM:
+audio.play().catch(e => console.log('Blocked:', e));</code></pre></div>
+              </div></td></tr>
+
+              <tr class="prop-row" data-expand="exp-apause">
+                <td><span class="prop-name">pause()</span></td><td><span class="prop-type">void</span></td>
+                <td><span class="prop-desc">Pause playback.</span> <span class="expand-hint">▾</span></td>
+              </tr>
+              <tr class="prop-expand-row" id="exp-apause"><td colspan="3"><div class="prop-expand-inner">
+                <div class="code-block"><div class="code-block-header"><span class="code-block-lang">JS</span><button class="copy-btn" data-target="ca-pause">Copy</button></div>
+                <pre><code id="ca-pause">audio.pause();</code></pre></div>
+              </div></td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="section">
+          <div class="section-title">Quick Examples</div>
+          <div class="code-block"><div class="code-block-header"><span class="code-block-lang">JS</span><button class="copy-btn" data-target="ca-ex">Copy</button></div>
+          <pre><code id="ca-ex">// Play a sound effect on button click (no HTML audio element needed)
+const click = new Audio('click.mp3');
+document.querySelector('button').addEventListener('click', () => {
+  click.currentTime = 0; // rewind so it plays even if still playing
+  click.play();
+});
+
+// Background music with volume control
+const music = document.querySelector('audio');
+music.loop = true;
+music.volume = 0.4;
+music.play();
+
+document.querySelector('#vol-slider').addEventListener('input', (e) => {
+  music.volume = e.target.value / 100;
+});</code></pre></div>
+        </div>
+
+        <div class="section">
+          <div class="section-title">Related Elements</div>
+          <div class="related-grid">
+            <a href="video.html" class="related-card">&lt;video&gt;</a>
+          </div>
+        </div>
+
+      </div>
+    </main>
+  </div>
+  <script>window.PAGE_TITLE = 'HTMLAudioElement';</script>
+  <script src="../sidebar.js"></script>
+  <script src="../main.js"></script>
+</body>
+</html>

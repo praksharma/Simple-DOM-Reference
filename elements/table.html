@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HTMLTableElement — DOMref</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600;700&display=swap">
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+  <div class="layout">
+    <main class="main">
+      <div class="topbar"></div>
+      <div class="content">
+
+        <div class="page-header">
+          <div class="element-badge">HTMLTableElement</div>
+          <h1 class="page-title">Table Element</h1>
+          <p class="page-subtitle">Represents a <code style="font-family:var(--font-mono);color:var(--text-code)">&lt;table&gt;</code> tag. Has dedicated methods to add/remove rows and cells without building HTML strings.</p>
+          <div class="html-preview">
+            <span class="tag-bracket">&lt;</span><span class="tag-name">table</span><span class="tag-bracket">&gt;&lt;/</span><span class="tag-name">table</span><span class="tag-bracket">&gt;</span>
+          </div>
+        </div>
+
+        <div class="section">
+          <div class="section-title">Unique Properties</div>
+          <table class="prop-table">
+            <thead><tr><th>Property</th><th>Type</th><th>Description</th></tr></thead>
+            <tbody>
+              <tr class="prop-row" data-expand="exp-trows">
+                <td><span class="prop-name">rows</span></td><td><span class="prop-type">HTMLCollection</span></td>
+                <td><span class="prop-desc">All &lt;tr&gt; rows in the table. Live-updating collection.</span> <span class="expand-hint">▾</span></td>
+              </tr>
+              <tr class="prop-expand-row" id="exp-trows"><td colspan="3"><div class="prop-expand-inner">
+                <div class="code-block"><div class="code-block-header"><span class="code-block-lang">JS</span><button class="copy-btn" data-target="ct-rows">Copy</button></div>
+                <pre><code id="ct-rows">console.log(table.rows.length); // number of rows
+const firstRow = table.rows[0];
+const lastRow  = table.rows[table.rows.length - 1];</code></pre></div>
+              </div></td></tr>
+
+              <tr class="prop-row" data-expand="exp-tcaption">
+                <td><span class="prop-name">caption</span></td><td><span class="prop-type">element</span></td>
+                <td><span class="prop-desc">The &lt;caption&gt; element for the table, or null.</span> <span class="expand-hint">▾</span></td>
+              </tr>
+              <tr class="prop-expand-row" id="exp-tcaption"><td colspan="3"><div class="prop-expand-inner">
+                <div class="code-block"><div class="code-block-header"><span class="code-block-lang">JS</span><button class="copy-btn" data-target="ct-cap">Copy</button></div>
+                <pre><code id="ct-cap">const cap = table.createCaption();
+cap.textContent = 'Monthly Sales';</code></pre></div>
+              </div></td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="section">
+          <div class="section-title">Common Methods</div>
+          <table class="prop-table">
+            <thead><tr><th>Method</th><th>Returns</th><th>Description</th></tr></thead>
+            <tbody>
+              <tr class="prop-row" data-expand="exp-tir">
+                <td><span class="prop-name">insertRow()</span></td><td><span class="prop-type">HTMLTableRowElement</span></td>
+                <td><span class="prop-desc">Adds a new &lt;tr&gt; and returns it. Pass index or -1 for end.</span> <span class="expand-hint">▾</span></td>
+              </tr>
+              <tr class="prop-expand-row" id="exp-tir"><td colspan="3"><div class="prop-expand-inner">
+                <div class="code-block"><div class="code-block-header"><span class="code-block-lang">JS</span><button class="copy-btn" data-target="ct-ir">Copy</button></div>
+                <pre><code id="ct-ir">const row = table.insertRow(-1); // append at end
+const cell1 = row.insertCell(0);
+const cell2 = row.insertCell(1);
+cell1.textContent = 'Alice';
+cell2.textContent = '42';</code></pre></div>
+              </div></td></tr>
+
+              <tr class="prop-row" data-expand="exp-tdr">
+                <td><span class="prop-name">deleteRow()</span></td><td><span class="prop-type">void</span></td>
+                <td><span class="prop-desc">Removes a row by index.</span> <span class="expand-hint">▾</span></td>
+              </tr>
+              <tr class="prop-expand-row" id="exp-tdr"><td colspan="3"><div class="prop-expand-inner">
+                <div class="code-block"><div class="code-block-header"><span class="code-block-lang">JS</span><button class="copy-btn" data-target="ct-dr">Copy</button></div>
+                <pre><code id="ct-dr">table.deleteRow(0);  // delete first row
+table.deleteRow(-1); // delete last row</code></pre></div>
+              </div></td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="section">
+          <div class="section-title">Quick Examples</div>
+          <div class="code-block"><div class="code-block-header"><span class="code-block-lang">JS</span><button class="copy-btn" data-target="ct-ex">Copy</button></div>
+          <pre><code id="ct-ex">const table = document.querySelector('table');
+
+// Build a table from data
+const data = [
+  ['Alice', 'Engineer', 'London'],
+  ['Bob',   'Designer', 'Berlin'],
+];
+
+data.forEach(([name, role, city]) => {
+  const row = table.insertRow(-1);
+  row.insertCell(0).textContent = name;
+  row.insertCell(1).textContent = role;
+  row.insertCell(2).textContent = city;
+});
+
+// Delete a row when clicked
+table.addEventListener('click', (e) => {
+  const row = e.target.closest('tr');
+  if (row) row.remove();
+});</code></pre></div>
+        </div>
+
+        <div class="section">
+          <div class="section-title">Related Elements</div>
+          <div class="related-grid">
+            <a href="form.html" class="related-card">&lt;form&gt;</a>
+            <a href="input.html" class="related-card">&lt;input&gt;</a>
+          </div>
+        </div>
+
+      </div>
+    </main>
+  </div>
+  <script>window.PAGE_TITLE = 'HTMLTableElement';</script>
+  <script src="../sidebar.js"></script>
+  <script src="../main.js"></script>
+</body>
+</html>

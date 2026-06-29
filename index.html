@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DOMref — HTML Element JS Reference</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600;700&display=swap">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="layout">
+    <!-- sidebar injected by sidebar.js -->
+    <main class="main">
+      <div class="topbar"></div>
+
+      <div class="index-hero">
+        <h1>HTML Element<br><span>JS Reference</span></h1>
+        <p>A practical, beginner-friendly reference for JavaScript properties and methods on HTML elements. No inheritance noise — just what you can actually use.</p>
+      </div>
+
+      <div class="element-grid">
+
+        <a href="elements/img.html" class="element-card">
+          <div class="element-card-tag">&lt;img&gt;</div>
+          <h3>HTMLImageElement</h3>
+          <p>src, alt, width, height, loading, naturalWidth and more.</p>
+        </a>
+
+        <a href="elements/input.html" class="element-card">
+          <div class="element-card-tag">&lt;input&gt;</div>
+          <h3>HTMLInputElement</h3>
+          <p>value, type, checked, placeholder, disabled, focus() and more.</p>
+        </a>
+
+        <a href="elements/canvas.html" class="element-card">
+          <div class="element-card-tag">&lt;canvas&gt;</div>
+          <h3>HTMLCanvasElement</h3>
+          <p>getContext(), width, height, toDataURL() and more.</p>
+        </a>
+
+        <a href="elements/video.html" class="element-card">
+          <div class="element-card-tag">&lt;video&gt;</div>
+          <h3>HTMLVideoElement</h3>
+          <p>play(), pause(), src, currentTime, volume, duration and more.</p>
+        </a>
+
+        <a href="elements/audio.html" class="element-card">
+          <div class="element-card-tag">&lt;audio&gt;</div>
+          <h3>HTMLAudioElement</h3>
+          <p>play(), pause(), src, currentTime, volume, muted and more.</p>
+        </a>
+
+        <a href="elements/table.html" class="element-card">
+          <div class="element-card-tag">&lt;table&gt;</div>
+          <h3>HTMLTableElement</h3>
+          <p>insertRow(), deleteRow(), rows, caption and more.</p>
+        </a>
+
+        <a href="elements/form.html" class="element-card">
+          <div class="element-card-tag">&lt;form&gt;</div>
+          <h3>HTMLFormElement</h3>
+          <p>submit(), reset(), elements, action, method and more.</p>
+        </a>
+
+      </div>
+    </main>
+  </div>
+
+  <script src="sidebar.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>

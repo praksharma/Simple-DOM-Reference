@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HTMLCanvasElement — DOMref</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600;700&display=swap">
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+  <div class="layout">
+    <main class="main">
+      <div class="topbar"></div>
+      <div class="content">
+
+        <div class="page-header">
+          <div class="element-badge">HTMLCanvasElement</div>
+          <h1 class="page-title">Canvas Element</h1>
+          <p class="page-subtitle">Represents a <code style="font-family:var(--font-mono);color:var(--text-code)">&lt;canvas&gt;</code> tag. A drawable surface — you get a drawing context from it and use that to draw shapes, images, and text with JavaScript.</p>
+          <div class="html-preview">
+            <span class="tag-bracket">&lt;</span><span class="tag-name">canvas</span>
+            <span class="attr-name"> width</span><span class="tag-bracket">=</span><span class="attr-val">"800"</span>
+            <span class="attr-name"> height</span><span class="tag-bracket">=</span><span class="attr-val">"400"</span>
+            <span class="tag-bracket">&gt;&lt;/</span><span class="tag-name">canvas</span><span class="tag-bracket">&gt;</span>
+          </div>
+        </div>
+
+        <div class="section">
+          <div class="section-title">Unique Properties</div>
+          <table class="prop-table">
+            <thead><tr><th>Property</th><th>Type</th><th>Description</th></tr></thead>
+            <tbody>
+              <tr class="prop-row" data-expand="exp-cw">
+                <td><span class="prop-name">width</span></td><td><span class="prop-type">number</span></td>
+                <td><span class="prop-desc">Drawing surface width in pixels. Setting this clears the canvas.</span> <span class="expand-hint">▾</span></td>
+              </tr>
+              <tr class="prop-expand-row" id="exp-cw"><td colspan="3"><div class="prop-expand-inner">
+                <p>Note: this is the canvas resolution, not the CSS display size. Use CSS for display size.</p>
+                <div class="code-block"><div class="code-block-header"><span class="code-block-lang">JS</span><button class="copy-btn" data-target="cc-w">Copy</button></div>
+                <pre><code id="cc-w">canvas.width = 1200;   // resolution
+canvas.height = 600;
+canvas.style.width = '600px';  // display size (CSS)</code></pre></div>
+              </div></td></tr>
+
+              <tr class="prop-row" data-expand="exp-ctx">
+                <td><span class="prop-name">getContext()</span></td><td><span class="prop-type">context</span></td>
+                <td><span class="prop-desc">Returns the drawing API. Pass "2d" for 2D graphics, "webgl" for 3D.</span> <span class="expand-hint">▾</span></td>
+              </tr>
+              <tr class="prop-expand-row" id="exp-ctx"><td colspan="3"><div class="prop-expand-inner">
+                <p>This is the most important method — everything you draw goes through the context object it returns.</p>
+                <div class="code-block"><div class="code-block-header"><span class="code-block-lang">JS</span><button class="copy-btn" data-target="cc-ctx">Copy</button></div>
+                <pre><code id="cc-ctx">const canvas = document.querySelector('canvas');
+const ctx = canvas.getContext('2d');
+
+// Now draw with ctx:
+ctx.fillStyle = 'red';
+ctx.fillRect(10, 10, 100, 50);   // x, y, width, height
+
+ctx.strokeStyle = 'blue';
+ctx.lineWidth = 3;
+ctx.strokeRect(10, 10, 100, 50);
+
+ctx.fillStyle = 'black';
+ctx.font = '20px sans-serif';
+ctx.fillText('Hello!', 10, 100);</code></pre></div>
+              </div></td></tr>
+
+              <tr class="prop-row" data-expand="exp-todata">
+                <td><span class="prop-name">toDataURL()</span></td><td><span class="prop-type">string</span></td>
+                <td><span class="prop-desc">Exports the canvas as a base64 image string (PNG by default).</span> <span class="expand-hint">▾</span></td>
+              </tr>
+              <tr class="prop-expand-row" id="exp-todata"><td colspan="3"><div class="prop-expand-inner">
+                <div class="code-block"><div class="code-block-header"><span class="code-block-lang">JS</span><button class="copy-btn" data-target="cc-todata">Copy</button></div>
+                <pre><code id="cc-todata">const dataURL = canvas.toDataURL('image/png');
+
+// Use it as an image src
+const img = document.createElement('img');
+img.src = dataURL;
+
+// Or trigger a download
+const a = document.createElement('a');
+a.href = dataURL;
+a.download = 'drawing.png';
+a.click();</code></pre></div>
+              </div></td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="section">
+          <div class="section-title">Quick Examples</div>
+          <div class="code-block"><div class="code-block-header"><span class="code-block-lang">JS</span><button class="copy-btn" data-target="cc-ex">Copy</button></div>
+          <pre><code id="cc-ex">const canvas = document.querySelector('canvas');
+const ctx = canvas.getContext('2d');
+
+// Draw a circle
+ctx.beginPath();
+ctx.arc(200, 200, 80, 0, Math.PI * 2);
+ctx.fillStyle = '#4361ee';
+ctx.fill();
+
+// Draw an image onto canvas
+const img = new Image();
+img.src = 'photo.jpg';
+img.onload = () => ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+
+// Clear everything
+ctx.clearRect(0, 0, canvas.width, canvas.height);</code></pre></div>
+        </div>
+
+        <div class="section">
+          <div class="section-title">Related Elements</div>
+          <div class="related-grid">
+            <a href="img.html" class="related-card">&lt;img&gt;</a>
+            <a href="video.html" class="related-card">&lt;video&gt;</a>
+          </div>
+        </div>
+
+      </div>
+    </main>
+  </div>
+  <script>window.PAGE_TITLE = 'HTMLCanvasElement';</script>
+  <script src="../sidebar.js"></script>
+  <script src="../main.js"></script>
+</body>
+</html>

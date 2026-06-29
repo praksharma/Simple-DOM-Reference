@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HTMLInputElement — DOMref</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600;700&display=swap">
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+  <div class="layout">
+    <main class="main">
+      <div class="topbar"></div>
+      <div class="content">
+
+        <div class="page-header">
+          <div class="element-badge">HTMLInputElement</div>
+          <h1 class="page-title">Input Element</h1>
+          <p class="page-subtitle">Represents an <code style="font-family:var(--font-mono);color:var(--text-code)">&lt;input&gt;</code> tag. The most versatile form element — can be text, checkbox, file picker, color picker, and more depending on <code style="font-family:var(--font-mono);color:var(--text-code)">type</code>.</p>
+          <div class="html-preview">
+            <span class="tag-bracket">&lt;</span><span class="tag-name">input</span>
+            <span class="attr-name"> type</span><span class="tag-bracket">=</span><span class="attr-val">"text"</span>
+            <span class="attr-name"> placeholder</span><span class="tag-bracket">=</span><span class="attr-val">"Enter name…"</span>
+            <span class="tag-bracket">&gt;</span>
+          </div>
+        </div>
+
+        <div class="section">
+          <div class="section-title">Unique Properties <span style="font-size:10px;font-weight:400;color:var(--text-muted);text-transform:none;letter-spacing:0">— specific to &lt;input&gt;</span></div>
+          <table class="prop-table">
+            <thead><tr><th>Property</th><th>Type</th><th>Description</th></tr></thead>
+            <tbody>
+
+              <tr class="prop-row" data-expand="exp-value">
+                <td><span class="prop-name">value</span></td>
+                <td><span class="prop-type">string</span></td>
+                <td><span class="prop-desc">What the user has typed (or the current value). Most used property.</span> <span class="expand-hint">▾</span></td>
+              </tr>
+              <tr class="prop-expand-row" id="exp-value">
+                <td colspan="3"><div class="prop-expand-inner">
+                  <p>Read to get what the user typed. Write to set it programmatically.</p>
+                  <div class="code-block"><div class="code-block-header"><span class="code-block-lang">JS</span><button class="copy-btn" data-target="c-value">Copy</button></div>
+                  <pre><code id="c-value">const input = document.querySelector('input');
+
+console.log(input.value); // what user typed
+input.value = 'Hello';    // set it programmatically
+input.value = '';         // clear the field</code></pre></div>
+                </div></td>
+              </tr>
+
+              <tr class="prop-row" data-expand="exp-type">
+                <td><span class="prop-name">type</span></td>
+                <td><span class="prop-type">string</span></td>
+                <td><span class="prop-desc">"text", "checkbox", "radio", "file", "number", "email", "password", etc.</span> <span class="expand-hint">▾</span></td>
+              </tr>
+              <tr class="prop-expand-row" id="exp-type">
+                <td colspan="3"><div class="prop-expand-inner">
+                  <p>The type controls what the input looks like and what <code style="font-family:var(--font-mono);color:var(--text-code)">value</code> contains.</p>
+                  <div class="code-block"><div class="code-block-header"><span class="code-block-lang">JS</span><button class="copy-btn" data-target="c-type">Copy</button></div>
+                  <pre><code id="c-type">input.type = 'password'; // hides text
+input.type = 'number';   // only allows numbers
+console.log(input.type); // 'number'</code></pre></div>
+                </div></td>
+              </tr>
+
+              <tr class="prop-row" data-expand="exp-checked">
+                <td><span class="prop-name">checked</span></td>
+                <td><span class="prop-type">boolean</span></td>
+                <td><span class="prop-desc">For checkboxes and radio buttons — true if selected.</span> <span class="expand-hint">▾</span></td>
+              </tr>
+              <tr class="prop-expand-row" id="exp-checked">
+                <td colspan="3"><div class="prop-expand-inner">
+                  <div class="code-block"><div class="code-block-header"><span class="code-block-lang">JS</span><button class="copy-btn" data-target="c-checked">Copy</button></div>
+                  <pre><code id="c-checked">const checkbox = document.querySelector('input[type="checkbox"]');
+console.log(checkbox.checked); // true or false
+checkbox.checked = true;       // tick it programmatically</code></pre></div>
+                </div></td>
+              </tr>
+
+              <tr class="prop-row" data-expand="exp-placeholder">
+                <td><span class="prop-name">placeholder</span></td>
+                <td><span class="prop-type">string</span></td>
+                <td><span class="prop-desc">Hint text shown when the field is empty.</span> <span class="expand-hint">▾</span></td>
+              </tr>
+              <tr class="prop-expand-row" id="exp-placeholder">
+                <td colspan="3"><div class="prop-expand-inner">
+                  <div class="code-block"><div class="code-block-header"><span class="code-block-lang">JS</span><button class="copy-btn" data-target="c-placeholder">Copy</button></div>
+                  <pre><code id="c-placeholder">input.placeholder = 'Search…';</code></pre></div>
+                </div></td>
+              </tr>
+
+              <tr class="prop-row" data-expand="exp-disabled">
+                <td><span class="prop-name">disabled</span></td>
+                <td><span class="prop-type">boolean</span></td>
+                <td><span class="prop-desc">Prevents interaction with the input when true.</span> <span class="expand-hint">▾</span></td>
+              </tr>
+              <tr class="prop-expand-row" id="exp-disabled">
+                <td colspan="3"><div class="prop-expand-inner">
+                  <div class="code-block"><div class="code-block-header"><span class="code-block-lang">JS</span><button class="copy-btn" data-target="c-disabled">Copy</button></div>
+                  <pre><code id="c-disabled">input.disabled = true;  // user can't type
+input.disabled = false; // re-enable</code></pre></div>
+                </div></td>
+              </tr>
+
+              <tr class="prop-row" data-expand="exp-readonly">
+                <td><span class="prop-name">readOnly</span></td>
+                <td><span class="prop-type">boolean</span></td>
+                <td><span class="prop-desc">User can see the value but can't edit it.</span> <span class="expand-hint">▾</span></td>
+              </tr>
+              <tr class="prop-expand-row" id="exp-readonly">
+                <td colspan="3"><div class="prop-expand-inner">
+                  <p>Unlike <code style="font-family:var(--font-mono);color:var(--text-code)">disabled</code>, a readOnly input still submits with the form.</p>
+                  <div class="code-block"><div class="code-block-header"><span class="code-block-lang">JS</span><button class="copy-btn" data-target="c-readonly">Copy</button></div>
+                  <pre><code id="c-readonly">input.readOnly = true;</code></pre></div>
+                </div></td>
+              </tr>
+
+              <tr class="prop-row" data-expand="exp-maxlength">
+                <td><span class="prop-name">maxLength</span></td>
+                <td><span class="prop-type">number</span></td>
+                <td><span class="prop-desc">Maximum number of characters allowed.</span> <span class="expand-hint">▾</span></td>
+              </tr>
+              <tr class="prop-expand-row" id="exp-maxlength">
+                <td colspan="3"><div class="prop-expand-inner">
+                  <div class="code-block"><div class="code-block-header"><span class="code-block-lang">JS</span><button class="copy-btn" data-target="c-maxlength">Copy</button></div>
+                  <pre><code id="c-maxlength">input.maxLength = 10; // user can't type more than 10 chars</code></pre></div>
+                </div></td>
+              </tr>
+
+            </tbody>
+          </table>
+        </div>
+
+        <div class="section">
+          <div class="section-title">Common Methods</div>
+          <table class="prop-table">
+            <thead><tr><th>Method</th><th>Returns</th><th>Description</th></tr></thead>
+            <tbody>
+
+              <tr class="prop-row" data-expand="exp-focus">
+                <td><span class="prop-name">focus()</span></td>
+                <td><span class="prop-type">void</span></td>
+                <td><span class="prop-desc">Moves keyboard focus to this input.</span> <span class="expand-hint">▾</span></td>
+              </tr>
+              <tr class="prop-expand-row" id="exp-focus">
+                <td colspan="3"><div class="prop-expand-inner">
+                  <div class="code-block"><div class="code-block-header"><span class="code-block-lang">JS</span><button class="copy-btn" data-target="c-focus">Copy</button></div>
+                  <pre><code id="c-focus">input.focus();  // user can start typing immediately
+input.blur();   // remove focus</code></pre></div>
+                </div></td>
+              </tr>
+
+              <tr class="prop-row" data-expand="exp-select">
+                <td><span class="prop-name">select()</span></td>
+                <td><span class="prop-type">void</span></td>
+                <td><span class="prop-desc">Selects all text in the input.</span> <span class="expand-hint">▾</span></td>
+              </tr>
+              <tr class="prop-expand-row" id="exp-select">
+                <td colspan="3"><div class="prop-expand-inner">
+                  <div class="code-block"><div class="code-block-header"><span class="code-block-lang">JS</span><button class="copy-btn" data-target="c-select">Copy</button></div>
+                  <pre><code id="c-select">input.select(); // highlights all text, ready to be replaced</code></pre></div>
+                </div></td>
+              </tr>
+
+              <tr class="prop-row" data-expand="exp-addevent-input">
+                <td><span class="prop-name">addEventListener()</span></td>
+                <td><span class="prop-type">void</span></td>
+                <td><span class="prop-desc">Listen for "input", "change", "focus", "keydown", etc.</span> <span class="expand-hint">▾</span></td>
+              </tr>
+              <tr class="prop-expand-row" id="exp-addevent-input">
+                <td colspan="3"><div class="prop-expand-inner">
+                  <p>"input" fires on every keystroke. "change" fires when the user leaves the field.</p>
+                  <div class="code-block"><div class="code-block-header"><span class="code-block-lang">JS</span><button class="copy-btn" data-target="c-addevent">Copy</button></div>
+                  <pre><code id="c-addevent">input.addEventListener('input', () => {
+  console.log('Current value:', input.value);
+});
+
+input.addEventListener('change', () => {
+  console.log('Committed:', input.value);
+});
+
+input.addEventListener('keydown', (e) => {
+  if (e.key === 'Enter') console.log('Enter pressed');
+});</code></pre></div>
+                </div></td>
+              </tr>
+
+            </tbody>
+          </table>
+        </div>
+
+        <div class="section">
+          <div class="section-title">Quick Examples</div>
+          <div class="code-block"><div class="code-block-header"><span class="code-block-lang">JS</span><button class="copy-btn" data-target="c-examples">Copy</button></div>
+          <pre><code id="c-examples">const input = document.querySelector('input');
+
+// Read what user typed
+console.log(input.value);
+
+// Clear on button click
+document.querySelector('button').addEventListener('click', () => {
+  input.value = '';
+  input.focus();
+});
+
+// Live character counter
+input.maxLength = 100;
+input.addEventListener('input', () => {
+  const remaining = 100 - input.value.length;
+  document.querySelector('#counter').textContent = remaining + ' left';
+});
+
+// Disable while loading
+input.disabled = true;
+fetch('/api/data').then(() => { input.disabled = false; });</code></pre></div>
+        </div>
+
+        <div class="section">
+          <div class="section-title">Related Elements</div>
+          <div class="related-grid">
+            <a href="form.html" class="related-card">&lt;form&gt;</a>
+            <a href="video.html" class="related-card">&lt;video&gt;</a>
+          </div>
+        </div>
+
+      </div>
+    </main>
+  </div>
+  <script>window.PAGE_TITLE = 'HTMLInputElement';</script>
+  <script src="../sidebar.js"></script>
+  <script src="../main.js"></script>
+</body>
+</html>

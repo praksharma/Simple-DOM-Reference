@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HTMLFormElement — DOMref</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600;700&display=swap">
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+  <div class="layout">
+    <main class="main">
+      <div class="topbar"></div>
+      <div class="content">
+
+        <div class="page-header">
+          <div class="element-badge">HTMLFormElement</div>
+          <h1 class="page-title">Form Element</h1>
+          <p class="page-subtitle">Represents a <code style="font-family:var(--font-mono);color:var(--text-code)">&lt;form&gt;</code> tag. Groups inputs together and handles submission. You usually intercept the submit event to process data with JS instead of letting the browser navigate.</p>
+          <div class="html-preview">
+            <span class="tag-bracket">&lt;</span><span class="tag-name">form</span>
+            <span class="attr-name"> action</span><span class="tag-bracket">=</span><span class="attr-val">"/submit"</span>
+            <span class="attr-name"> method</span><span class="tag-bracket">=</span><span class="attr-val">"post"</span>
+            <span class="tag-bracket">&gt;&lt;/</span><span class="tag-name">form</span><span class="tag-bracket">&gt;</span>
+          </div>
+        </div>
+
+        <div class="section">
+          <div class="section-title">Unique Properties</div>
+          <table class="prop-table">
+            <thead><tr><th>Property</th><th>Type</th><th>Description</th></tr></thead>
+            <tbody>
+              <tr class="prop-row" data-expand="exp-felements">
+                <td><span class="prop-name">elements</span></td><td><span class="prop-type">HTMLFormControlsCollection</span></td>
+                <td><span class="prop-desc">All input/select/textarea elements inside the form.</span> <span class="expand-hint">▾</span></td>
+              </tr>
+              <tr class="prop-expand-row" id="exp-felements"><td colspan="3"><div class="prop-expand-inner">
+                <p>You can access them by index or by their <code style="font-family:var(--font-mono);color:var(--text-code)">name</code> attribute.</p>
+                <div class="code-block"><div class="code-block-header"><span class="code-block-lang">JS</span><button class="copy-btn" data-target="cf-el">Copy</button></div>
+                <pre><code id="cf-el">const form = document.querySelector('form');
+console.log(form.elements.length);
+const nameInput = form.elements['username']; // by name attribute
+console.log(nameInput.value);</code></pre></div>
+              </div></td></tr>
+
+              <tr class="prop-row" data-expand="exp-faction">
+                <td><span class="prop-name">action</span></td><td><span class="prop-type">string</span></td>
+                <td><span class="prop-desc">URL where the form data is sent on submit.</span> <span class="expand-hint">▾</span></td>
+              </tr>
+              <tr class="prop-expand-row" id="exp-faction"><td colspan="3"><div class="prop-expand-inner">
+                <div class="code-block"><div class="code-block-header"><span class="code-block-lang">JS</span><button class="copy-btn" data-target="cf-action">Copy</button></div>
+                <pre><code id="cf-action">form.action = '/api/login';
+console.log(form.action); // full URL</code></pre></div>
+              </div></td></tr>
+
+              <tr class="prop-row" data-expand="exp-fmethod">
+                <td><span class="prop-name">method</span></td><td><span class="prop-type">string</span></td>
+                <td><span class="prop-desc">"get" or "post". Controls how data is sent.</span> <span class="expand-hint">▾</span></td>
+              </tr>
+              <tr class="prop-expand-row" id="exp-fmethod"><td colspan="3"><div class="prop-expand-inner">
+                <div class="code-block"><div class="code-block-header"><span class="code-block-lang">JS</span><button class="copy-btn" data-target="cf-method">Copy</button></div>
+                <pre><code id="cf-method">form.method = 'post';</code></pre></div>
+              </div></td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="section">
+          <div class="section-title">Common Methods</div>
+          <table class="prop-table">
+            <thead><tr><th>Method</th><th>Returns</th><th>Description</th></tr></thead>
+            <tbody>
+              <tr class="prop-row" data-expand="exp-fsubmit">
+                <td><span class="prop-name">submit()</span></td><td><span class="prop-type">void</span></td>
+                <td><span class="prop-desc">Submits the form programmatically (bypasses the submit event).</span> <span class="expand-hint">▾</span></td>
+              </tr>
+              <tr class="prop-expand-row" id="exp-fsubmit"><td colspan="3"><div class="prop-expand-inner">
+                <p>Note: calling <code style="font-family:var(--font-mono);color:var(--text-code)">form.submit()</code> does NOT fire the submit event. Usually you want to listen for the event instead.</p>
+                <div class="code-block"><div class="code-block-header"><span class="code-block-lang">JS</span><button class="copy-btn" data-target="cf-submit">Copy</button></div>
+                <pre><code id="cf-submit">form.submit(); // bypasses event listeners</code></pre></div>
+              </div></td></tr>
+
+              <tr class="prop-row" data-expand="exp-freset">
+                <td><span class="prop-name">reset()</span></td><td><span class="prop-type">void</span></td>
+                <td><span class="prop-desc">Clears all fields back to their default values.</span> <span class="expand-hint">▾</span></td>
+              </tr>
+              <tr class="prop-expand-row" id="exp-freset"><td colspan="3"><div class="prop-expand-inner">
+                <div class="code-block"><div class="code-block-header"><span class="code-block-lang">JS</span><button class="copy-btn" data-target="cf-reset">Copy</button></div>
+                <pre><code id="cf-reset">form.reset(); // clears all inputs</code></pre></div>
+              </div></td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="section">
+          <div class="section-title">Quick Examples</div>
+          <div class="code-block"><div class="code-block-header"><span class="code-block-lang">JS</span><button class="copy-btn" data-target="cf-ex">Copy</button></div>
+          <pre><code id="cf-ex">const form = document.querySelector('form');
+
+// The most common pattern: intercept submit, handle with JS
+form.addEventListener('submit', (e) => {
+  e.preventDefault(); // stop the browser from navigating
+
+  const data = new FormData(form);
+  const username = data.get('username');
+  const password = data.get('password');
+
+  fetch('/api/login', {
+    method: 'POST',
+    body: JSON.stringify({ username, password }),
+    headers: { 'Content-Type': 'application/json' }
+  })
+  .then(res => res.json())
+  .then(result => {
+    if (result.ok) {
+      window.location.href = '/dashboard';
+    } else {
+      alert('Login failed');
+      form.reset();
+    }
+  });
+});</code></pre></div>
+        </div>
+
+        <div class="section">
+          <div class="section-title">Related Elements</div>
+          <div class="related-grid">
+            <a href="input.html" class="related-card">&lt;input&gt;</a>
+            <a href="table.html" class="related-card">&lt;table&gt;</a>
+          </div>
+        </div>
+
+      </div>
+    </main>
+  </div>
+  <script>window.PAGE_TITLE = 'HTMLFormElement';</script>
+  <script src="../sidebar.js"></script>
+  <script src="../main.js"></script>
+</body>
+</html>
