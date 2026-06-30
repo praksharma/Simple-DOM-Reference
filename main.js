@@ -110,24 +110,34 @@ document.addEventListener('DOMContentLoaded', () => {
   // Sidebar search filter
   const searchInput = document.getElementById('sidebar-search');
   const emptyMessage = document.getElementById('sidebar-empty');
-  const sidebarItems = Array.from(document.querySelectorAll('.sidebar-nav li'));
+  const sidebarSections = Array.from(document.querySelectorAll('[data-sidebar-section]'));
 
   const filterSidebar = () => {
     if (!searchInput) return;
 
     const q = searchInput.value.toLowerCase().trim();
-    let visible = 0;
+    let totalVisible = 0;
 
-    sidebarItems.forEach((li) => {
-      const link = li.querySelector('a');
-      const text = (link?.dataset.searchText || li.textContent || '').toLowerCase();
-      const isMatch = q === '' || text.includes(q);
-      li.hidden = !isMatch;
-      if (isMatch) visible += 1;
+    sidebarSections.forEach((section) => {
+      let sectionVisible = 0;
+
+      section.querySelectorAll('.sidebar-nav li').forEach((li) => {
+        const link = li.querySelector('a');
+        const text = (link?.dataset.searchText || li.textContent || '').toLowerCase();
+        const isMatch = q === '' || text.includes(q);
+        li.hidden = !isMatch;
+
+        if (isMatch) {
+          sectionVisible += 1;
+          totalVisible += 1;
+        }
+      });
+
+      section.hidden = q !== '' && sectionVisible === 0;
     });
 
     if (emptyMessage) {
-      emptyMessage.hidden = visible > 0;
+      emptyMessage.hidden = totalVisible > 0;
     }
   };
 
@@ -199,6 +209,52 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
+  // Property badges
+  const commonApis = new Set([
+    'textContent',
+    'innerHTML',
+    'innerText',
+    'style',
+    'classList',
+    'children',
+    'parentElement',
+    'append()',
+    'prepend()',
+    'remove()',
+    'id',
+    'getAttribute()',
+    'setAttribute()',
+    'removeAttribute()',
+    'addEventListener()',
+    'removeEventListener()',
+    'clientWidth / clientHeight',
+    'getBoundingClientRect()',
+  ]);
+
+  const categoryForCurrentPage = (apiName) => {
+    const title = window.PAGE_TITLE || '';
+
+    if (title === 'Element' || commonApis.has(apiName)) return 'Inherited';
+    if (title.includes('Input')) return 'Input only';
+    if (title.includes('Audio') || title.includes('Video')) return 'Media';
+    if (title.includes('Canvas')) return 'Canvas';
+    if (title.includes('Table')) return 'Table';
+    if (title.includes('Form')) return 'Form';
+    if (title.includes('Image')) return 'Image';
+
+    return '';
+  };
+
+  document.querySelectorAll('.prop-row').forEach((row) => {
+    const name = row.querySelector('.prop-name');
+    if (!name || name.parentElement.querySelector('.prop-badge')) return;
+
+    const category = categoryForCurrentPage(name.textContent.trim());
+    if (!category) return;
+
+    name.insertAdjacentHTML('afterend', `<span class="api-badge prop-badge">${category}</span>`);
+  });
+
   // Copy buttons
   document.querySelectorAll('.copy-btn').forEach((btn) => {
     btn.addEventListener('click', async (e) => {
@@ -227,9 +283,10 @@ document.addEventListener('DOMContentLoaded', () => {
   // Active nav link
   const pathParts = window.location.pathname.split('/').filter(Boolean);
   const current = pathParts[pathParts.length - 1] || 'index.html';
+  const currentTail = pathParts.slice(-2).join('/');
 
   document.querySelectorAll('.sidebar-nav a').forEach((a) => {
-    const isActive = a.dataset.file === current;
+    const isActive = a.dataset.path === currentTail || a.dataset.path === current;
     a.classList.toggle('active', isActive);
 
     if (isActive) {

@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Element - DOMref</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600;700&display=swap">
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+  <div class="layout">
+    <main class="main">
+      <div class="topbar"></div>
+      <div class="content">
+
+        <div class="page-header">
+          <div class="element-badge">Element</div>
+          <h1 class="page-title">Common Element APIs</h1>
+          <p class="page-subtitle">The learn-once page for APIs shared by almost every HTML element. These are the properties and methods beginners reach for constantly.</p>
+          <div class="html-preview">
+            <span class="tag-bracket">&lt;</span><span class="tag-name">div</span><span class="tag-bracket">&gt;</span>
+            <span>Any normal element</span>
+            <span class="tag-bracket">&lt;/</span><span class="tag-name">div</span><span class="tag-bracket">&gt;</span>
+          </div>
+        </div>
+
+        <div class="section">
+          <div class="section-title">Learn first</div>
+          <div class="learn-grid">
+            <a href="../properties/textContent.html" class="learn-card"><span>textContent</span><small>Put text on the page</small></a>
+            <a href="../properties/classList.html" class="learn-card"><span>classList</span><small>Toggle CSS states</small></a>
+            <a href="../properties/style.html" class="learn-card"><span>style</span><small>Small inline style changes</small></a>
+            <a href="../methods/addEventListener.html" class="learn-card"><span>addEventListener()</span><small>React to user actions</small></a>
+            <a href="../methods/append.html" class="learn-card"><span>append()</span><small>Add content at the end</small></a>
+            <a href="../methods/remove.html" class="learn-card"><span>remove()</span><small>Delete an element</small></a>
+          </div>
+        </div>
+
+        <div class="section">
+          <div class="section-title">Content</div>
+          <table class="prop-table">
+            <thead><tr><th>API</th><th>Type</th><th>Description</th></tr></thead>
+            <tbody>
+              <tr class="prop-row" data-expand="exp-text-content">
+                <td><span class="prop-name">textContent</span></td><td><span class="prop-type">string</span></td>
+                <td><span class="prop-desc">Plain text inside the element.</span> <span class="expand-hint">▾</span></td>
+              </tr>
+              <tr class="prop-expand-row" id="exp-text-content"><td colspan="3"><div class="prop-expand-inner">
+                <p>Use this for user-facing text. It does not parse HTML.</p>
+                <div class="code-block"><div class="code-block-header"><span class="code-block-lang">JS</span><button class="copy-btn" data-target="ce-text">Copy</button></div>
+                <pre><code id="ce-text">element.textContent = 'Saved';</code></pre></div>
+              </div></td></tr>
+
+              <tr class="prop-row" data-expand="exp-inner-html">
+                <td><span class="prop-name">innerHTML</span></td><td><span class="prop-type">string</span></td>
+                <td><span class="prop-desc">HTML markup inside the element.</span> <span class="expand-hint">▾</span></td>
+              </tr>
+              <tr class="prop-expand-row" id="exp-inner-html"><td colspan="3"><div class="prop-expand-inner">
+                <p>Only use with trusted HTML. For user data, use <code style="font-family:var(--font-mono);color:var(--text-code)">textContent</code>.</p>
+                <div class="code-block"><div class="code-block-header"><span class="code-block-lang">JS</span><button class="copy-btn" data-target="ce-html">Copy</button></div>
+                <pre><code id="ce-html">element.innerHTML = '&lt;strong&gt;Saved&lt;/strong&gt;';</code></pre></div>
+              </div></td></tr>
+
+              <tr class="prop-row" data-expand="exp-inner-text">
+                <td><span class="prop-name">innerText</span></td><td><span class="prop-type">string</span></td>
+                <td><span class="prop-desc">Visible rendered text, affected by CSS layout.</span> <span class="expand-hint">▾</span></td>
+              </tr>
+              <tr class="prop-expand-row" id="exp-inner-text"><td colspan="3"><div class="prop-expand-inner">
+                <p>Most of the time, beginners should prefer <code style="font-family:var(--font-mono);color:var(--text-code)">textContent</code>.</p>
+                <div class="code-block"><div class="code-block-header"><span class="code-block-lang">JS</span><button class="copy-btn" data-target="ce-innertext">Copy</button></div>
+                <pre><code id="ce-innertext">console.log(element.innerText);</code></pre></div>
+              </div></td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="section">
+          <div class="section-title">CSS</div>
+          <table class="prop-table">
+            <thead><tr><th>API</th><th>Type</th><th>Description</th></tr></thead>
+            <tbody>
+              <tr class="prop-row" data-expand="exp-style">
+                <td><span class="prop-name">style</span></td><td><span class="prop-type">CSSStyleDeclaration</span></td>
+                <td><span class="prop-desc">Inline styles for one element.</span> <span class="expand-hint">▾</span></td>
+              </tr>
+              <tr class="prop-expand-row" id="exp-style"><td colspan="3"><div class="prop-expand-inner">
+                <div class="code-block"><div class="code-block-header"><span class="code-block-lang">JS</span><button class="copy-btn" data-target="ce-style">Copy</button></div>
+                <pre><code id="ce-style">element.style.display = 'none';
+element.style.backgroundColor = 'gold';</code></pre></div>
+              </div></td></tr>
+
+              <tr class="prop-row" data-expand="exp-classlist">
+                <td><span class="prop-name">classList</span></td><td><span class="prop-type">DOMTokenList</span></td>
+                <td><span class="prop-desc">Add, remove, toggle, and check CSS classes.</span> <span class="expand-hint">▾</span></td>
+              </tr>
+              <tr class="prop-expand-row" id="exp-classlist"><td colspan="3"><div class="prop-expand-inner">
+                <div class="code-block"><div class="code-block-header"><span class="code-block-lang">JS</span><button class="copy-btn" data-target="ce-class">Copy</button></div>
+                <pre><code id="ce-class">element.classList.add('active');
+element.classList.toggle('open');
+element.classList.remove('hidden');</code></pre></div>
+              </div></td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="section">
+          <div class="section-title">Tree</div>
+          <table class="prop-table">
+            <thead><tr><th>API</th><th>Type</th><th>Description</th></tr></thead>
+            <tbody>
+              <tr class="prop-row" data-expand="exp-children">
+                <td><span class="prop-name">children</span></td><td><span class="prop-type">HTMLCollection</span></td>
+                <td><span class="prop-desc">Child elements, not text nodes.</span> <span class="expand-hint">▾</span></td>
+              </tr>
+              <tr class="prop-expand-row" id="exp-children"><td colspan="3"><div class="prop-expand-inner">
+                <div class="code-block"><div class="code-block-header"><span class="code-block-lang">JS</span><button class="copy-btn" data-target="ce-children">Copy</button></div>
+                <pre><code id="ce-children">console.log(element.children.length);</code></pre></div>
+              </div></td></tr>
+
+              <tr class="prop-row" data-expand="exp-parent">
+                <td><span class="prop-name">parentElement</span></td><td><span class="prop-type">Element</span></td>
+                <td><span class="prop-desc">The element that contains this element.</span> <span class="expand-hint">▾</span></td>
+              </tr>
+              <tr class="prop-expand-row" id="exp-parent"><td colspan="3"><div class="prop-expand-inner">
+                <div class="code-block"><div class="code-block-header"><span class="code-block-lang">JS</span><button class="copy-btn" data-target="ce-parent">Copy</button></div>
+                <pre><code id="ce-parent">element.parentElement.classList.add('has-child');</code></pre></div>
+              </div></td></tr>
+
+              <tr class="prop-row" data-expand="exp-append">
+                <td><span class="prop-name">append()</span></td><td><span class="prop-type">void</span></td>
+                <td><span class="prop-desc">Add nodes or text to the end.</span> <span class="expand-hint">▾</span></td>
+              </tr>
+              <tr class="prop-expand-row" id="exp-append"><td colspan="3"><div class="prop-expand-inner">
+                <div class="code-block"><div class="code-block-header"><span class="code-block-lang">JS</span><button class="copy-btn" data-target="ce-append">Copy</button></div>
+                <pre><code id="ce-append">const item = document.createElement('li');
+item.textContent = 'New item';
+list.append(item);</code></pre></div>
+              </div></td></tr>
+
+              <tr class="prop-row" data-expand="exp-prepend">
+                <td><span class="prop-name">prepend()</span></td><td><span class="prop-type">void</span></td>
+                <td><span class="prop-desc">Add nodes or text to the beginning.</span> <span class="expand-hint">▾</span></td>
+              </tr>
+              <tr class="prop-expand-row" id="exp-prepend"><td colspan="3"><div class="prop-expand-inner">
+                <div class="code-block"><div class="code-block-header"><span class="code-block-lang">JS</span><button class="copy-btn" data-target="ce-prepend">Copy</button></div>
+                <pre><code id="ce-prepend">list.prepend(item);</code></pre></div>
+              </div></td></tr>
+
+              <tr class="prop-row" data-expand="exp-remove">
+                <td><span class="prop-name">remove()</span></td><td><span class="prop-type">void</span></td>
+                <td><span class="prop-desc">Remove this element from the page.</span> <span class="expand-hint">▾</span></td>
+              </tr>
+              <tr class="prop-expand-row" id="exp-remove"><td colspan="3"><div class="prop-expand-inner">
+                <div class="code-block"><div class="code-block-header"><span class="code-block-lang">JS</span><button class="copy-btn" data-target="ce-remove">Copy</button></div>
+                <pre><code id="ce-remove">element.remove();</code></pre></div>
+              </div></td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="section">
+          <div class="section-title">Attributes</div>
+          <table class="prop-table">
+            <thead><tr><th>API</th><th>Type</th><th>Description</th></tr></thead>
+            <tbody>
+              <tr class="prop-row" data-expand="exp-id">
+                <td><span class="prop-name">id</span></td><td><span class="prop-type">string</span></td>
+                <td><span class="prop-desc">The element's id attribute.</span> <span class="expand-hint">▾</span></td>
+              </tr>
+              <tr class="prop-expand-row" id="exp-id"><td colspan="3"><div class="prop-expand-inner">
+                <div class="code-block"><div class="code-block-header"><span class="code-block-lang">JS</span><button class="copy-btn" data-target="ce-id">Copy</button></div>
+                <pre><code id="ce-id">element.id = 'result';</code></pre></div>
+              </div></td></tr>
+
+              <tr class="prop-row" data-expand="exp-get-attr">
+                <td><span class="prop-name">getAttribute()</span></td><td><span class="prop-type">string</span></td>
+                <td><span class="prop-desc">Read an HTML attribute.</span> <span class="expand-hint">▾</span></td>
+              </tr>
+              <tr class="prop-expand-row" id="exp-get-attr"><td colspan="3"><div class="prop-expand-inner">
+                <div class="code-block"><div class="code-block-header"><span class="code-block-lang">JS</span><button class="copy-btn" data-target="ce-get">Copy</button></div>
+                <pre><code id="ce-get">const label = element.getAttribute('aria-label');</code></pre></div>
+              </div></td></tr>
+
+              <tr class="prop-row" data-expand="exp-set-attr">
+                <td><span class="prop-name">setAttribute()</span></td><td><span class="prop-type">void</span></td>
+                <td><span class="prop-desc">Write an HTML attribute.</span> <span class="expand-hint">▾</span></td>
+              </tr>
+              <tr class="prop-expand-row" id="exp-set-attr"><td colspan="3"><div class="prop-expand-inner">
+                <div class="code-block"><div class="code-block-header"><span class="code-block-lang">JS</span><button class="copy-btn" data-target="ce-set">Copy</button></div>
+                <pre><code id="ce-set">element.setAttribute('aria-expanded', 'true');</code></pre></div>
+              </div></td></tr>
+
+              <tr class="prop-row" data-expand="exp-remove-attr">
+                <td><span class="prop-name">removeAttribute()</span></td><td><span class="prop-type">void</span></td>
+                <td><span class="prop-desc">Remove an HTML attribute.</span> <span class="expand-hint">▾</span></td>
+              </tr>
+              <tr class="prop-expand-row" id="exp-remove-attr"><td colspan="3"><div class="prop-expand-inner">
+                <div class="code-block"><div class="code-block-header"><span class="code-block-lang">JS</span><button class="copy-btn" data-target="ce-remove-attr">Copy</button></div>
+                <pre><code id="ce-remove-attr">element.removeAttribute('hidden');</code></pre></div>
+              </div></td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="section">
+          <div class="section-title">Events</div>
+          <table class="prop-table">
+            <thead><tr><th>API</th><th>Type</th><th>Description</th></tr></thead>
+            <tbody>
+              <tr class="prop-row" data-expand="exp-add-event">
+                <td><span class="prop-name">addEventListener()</span></td><td><span class="prop-type">void</span></td>
+                <td><span class="prop-desc">Run code when an event happens.</span> <span class="expand-hint">▾</span></td>
+              </tr>
+              <tr class="prop-expand-row" id="exp-add-event"><td colspan="3"><div class="prop-expand-inner">
+                <div class="code-block"><div class="code-block-header"><span class="code-block-lang">JS</span><button class="copy-btn" data-target="ce-event">Copy</button></div>
+                <pre><code id="ce-event">button.addEventListener('click', () => {
+  console.log('Clicked');
+});</code></pre></div>
+              </div></td></tr>
+
+              <tr class="prop-row" data-expand="exp-remove-event">
+                <td><span class="prop-name">removeEventListener()</span></td><td><span class="prop-type">void</span></td>
+                <td><span class="prop-desc">Stop a previously added listener.</span> <span class="expand-hint">▾</span></td>
+              </tr>
+              <tr class="prop-expand-row" id="exp-remove-event"><td colspan="3"><div class="prop-expand-inner">
+                <div class="code-block"><div class="code-block-header"><span class="code-block-lang">JS</span><button class="copy-btn" data-target="ce-remove-event">Copy</button></div>
+                <pre><code id="ce-remove-event">button.removeEventListener('click', handleClick);</code></pre></div>
+              </div></td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="section">
+          <div class="section-title">Geometry</div>
+          <table class="prop-table">
+            <thead><tr><th>API</th><th>Type</th><th>Description</th></tr></thead>
+            <tbody>
+              <tr class="prop-row" data-expand="exp-client-size">
+                <td><span class="prop-name">clientWidth / clientHeight</span></td><td><span class="prop-type">number</span></td>
+                <td><span class="prop-desc">Inner visible size in pixels.</span> <span class="expand-hint">▾</span></td>
+              </tr>
+              <tr class="prop-expand-row" id="exp-client-size"><td colspan="3"><div class="prop-expand-inner">
+                <div class="code-block"><div class="code-block-header"><span class="code-block-lang">JS</span><button class="copy-btn" data-target="ce-client">Copy</button></div>
+                <pre><code id="ce-client">console.log(element.clientWidth, element.clientHeight);</code></pre></div>
+              </div></td></tr>
+
+              <tr class="prop-row" data-expand="exp-rect">
+                <td><span class="prop-name">getBoundingClientRect()</span></td><td><span class="prop-type">DOMRect</span></td>
+                <td><span class="prop-desc">Position and size relative to the viewport.</span> <span class="expand-hint">▾</span></td>
+              </tr>
+              <tr class="prop-expand-row" id="exp-rect"><td colspan="3"><div class="prop-expand-inner">
+                <div class="code-block"><div class="code-block-header"><span class="code-block-lang">JS</span><button class="copy-btn" data-target="ce-rect">Copy</button></div>
+                <pre><code id="ce-rect">const rect = element.getBoundingClientRect();
+console.log(rect.left, rect.top, rect.width, rect.height);</code></pre></div>
+              </div></td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="section">
+          <div class="section-title">Related Elements</div>
+          <div class="related-grid">
+            <a href="input.html" class="related-card">&lt;input&gt;</a>
+            <a href="img.html" class="related-card">&lt;img&gt;</a>
+            <a href="canvas.html" class="related-card">&lt;canvas&gt;</a>
+            <a href="video.html" class="related-card">&lt;video&gt;</a>
+          </div>
+        </div>
+
+        <div class="section">
+          <div class="section-title">Related Properties</div>
+          <div class="related-grid">
+            <a href="../properties/textContent.html" class="related-card">textContent</a>
+            <a href="../properties/innerHTML.html" class="related-card">innerHTML</a>
+            <a href="../properties/classList.html" class="related-card">classList</a>
+            <a href="../properties/style.html" class="related-card">style</a>
+          </div>
+        </div>
+
+        <div class="section">
+          <div class="section-title">Related Methods</div>
+          <div class="related-grid">
+            <a href="../methods/addEventListener.html" class="related-card">addEventListener()</a>
+            <a href="../methods/append.html" class="related-card">append()</a>
+            <a href="../methods/prepend.html" class="related-card">prepend()</a>
+            <a href="../methods/remove.html" class="related-card">remove()</a>
+          </div>
+        </div>
+
+      </div>
+    </main>
+  </div>
+  <script>window.PAGE_TITLE = 'Element';</script>
+  <script src="../sidebar.js"></script>
+  <script src="../main.js"></script>
+</body>
+</html>
